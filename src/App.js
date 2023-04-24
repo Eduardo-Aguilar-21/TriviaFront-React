@@ -1,24 +1,22 @@
-import logo from './logo.svg';
+import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
+import { CategoriaMenu } from './Componentes/Categoria/categoriaMenu';
+import { CategoriaDetalle } from './Componentes/Categoria/categoriaDetalle';
+import { PreguntaItem } from './Preguntas/preguntaItem';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App"> 
+        <Link to={'/'} >Inicio</Link>    
+      </div>
+      <Routes>
+        <Route exact path='/' element={<CategoriaMenu /> } />
+        <Route exact path='/jugando/:cat_id/:dificultad' element={<PreguntaItem />} />
+        <Route exact path='/detalle/:id' element={<CategoriaDetalle />} />
+       </Routes>
+    </Router>
+
   );
 }
 

@@ -1,0 +1,7 @@
+.preguntaContenedor{
+    width: 90%;
+    height: 100%;
+    border: 2px solid black; 
+    margin: auto;
+    padding: 10%;
+}
