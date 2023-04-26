@@ -18,7 +18,7 @@ export function CategoriaDetalle(){
         if(id){
             getCat();
         }
-    },[id]);
+    });
 
     const getCat = async() => {
         const resul = await axios.get(`http://localhost:8080/trivia/categoria/${id}`);

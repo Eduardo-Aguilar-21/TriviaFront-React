@@ -2,7 +2,7 @@ import { Link, Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 import './App.css';
 import { CategoriaMenu } from './Componentes/Categoria/categoriaMenu';
 import { CategoriaDetalle } from './Componentes/Categoria/categoriaDetalle';
-import { PreguntaItem } from './Preguntas/preguntaItem';
+import { PreguntaItem } from './Componentes/Preguntas/preguntaItem';
 
 function App() {
   return (

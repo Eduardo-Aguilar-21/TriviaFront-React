@@ -5,3 +5,55 @@
     margin: auto;
     padding: 10%;
 }
+
+.cajaPregunta{
+    border: 2px solid black;
+    border-radius: 25px;
+    margin: 2% auto;
+    padding: 2%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.detallePregunta{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 8% 0 0 0;
+}
+
+.contenedorRespuesta{
+    border: 2px solid black;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+    margin: 2% auto;
+    width: 100%;
+    flex-wrap: wrap;
+}
+
+.respuestaCaja{
+    border: 2px solid green;
+    border-radius: 25px;
+    width: 200px;
+    height: 100%;
+    padding: 2%;
+    margin: 2%;   
+    text-align: center;
+    justify-content: center;
+    font-size: large;
+}
+
+.respuestaCaja:hover{
+    background-color: bisque;
+    cursor: pointer;
+}
+
+.sinRespuesta{
+    margin: 5% ;
+}
+

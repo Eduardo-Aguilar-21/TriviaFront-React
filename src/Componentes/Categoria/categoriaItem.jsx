@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import '../../Estilos/categoria.css';
-import { Link, Route } from "react-router-dom";
-import { CategoriaDetalle } from "./categoriaDetalle";
+import { Link } from "react-router-dom";
 import { GiSoccerBall } from "react-icons/gi";
 import { TbMovie } from "react-icons/tb";
 

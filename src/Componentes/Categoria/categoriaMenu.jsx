@@ -13,7 +13,7 @@ export function CategoriaMenu(){
     },[]);
 
     const ListDatos = async() => {
-        const results = await axios.get('http://localhost:8080/trivia/categoria');
+        const results = await axios.get('https://triviaapi-production.up.railway.app/trivia/categoria');
         setDatos(results.data); 
     } 
 

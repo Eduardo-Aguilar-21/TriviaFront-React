@@ -2,7 +2,8 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-import '../Estilos/preguntas.css';
+import '../../Estilos/preguntas.css';
+import { PreguntaComponente } from "./preguntaComponente";
 
 export function PreguntaItem(){
 
@@ -23,7 +24,7 @@ export function PreguntaItem(){
     }, [pregunta, respondido]);
 
     const lose = () => {
-        if(respondido.length == 2){
+        if(respondido.length === 10){
             alert("game over");
         }
     }
@@ -78,31 +79,30 @@ export function PreguntaItem(){
     return(
         <div className="preguntaContenedor">
             <h1>Puntaje {contador}</h1>
-            <h1>Respondido {respondido.length}</h1>
-            {preguntaS &&(
+            {preguntaS &&(               
                 <div key={preguntaS.id_pre}>
-                    <h1>Pregunta: {preguntaS.id_pre}</h1>
-                    <h1>{preguntaS.pregunta_n}</h1>
-                    <h4> Categoria: </h4>
-                    <h4>{preguntaS.categoriaModel.nombre_cat}</h4>
-                    {
-                        respuesta.length > 0 ? (
-                            respuesta.map((r) => (
-                                <div key={r.id_res}>
-                                    <h5>Respuesta : {r.respuesta_n}
-                                        <Button onClick={() => sumarPuntaje(r.esValida, r.puntos, preguntaS.id_pre)} >Seleccionar</Button>
-                                    </h5> 
-                                </div>    
-                            ))
-                        ) : 
-                        (
-                            <h1>No hay</h1>
-                        )
-                    }
+                    <PreguntaComponente titulo = {preguntaS.pregunta_n} categoria={preguntaS.categoriaModel.nombre_cat} dificultad={preguntaS.dificultadModel.nom_dif} />
+                    <div className="contenedorRespuesta">
+                        {
+                            respuesta.length > 0 ? (
+                                respuesta.map((r) => (
+                                    <div key={r.id_res} className='respuestaCaja' onClick={() => sumarPuntaje(r.esValida, r.puntos, preguntaS.id_pre)}>
+                                        <span> {r.respuesta_n}
+                                        </span> 
+                                    </div>    
+                                ))
+                            ) : 
+                            (
+                                <div className="sinRespuesta">
+                                    <h1>No hay</h1>
+                                    <Button onClick={() => handleClickPregunta()}>Cambiar Pregunta</Button>
+                                </div>
+                                 )
+                        }
+                    </div>
+
                 </div>
             )}
-
-            <Button onClick={() => handleClickPregunta()}>Cambiar Pregunta</Button>
         </div>
     );
 }
