@@ -7,7 +7,7 @@ import { PreguntaComponente } from "./preguntaComponente";
 
 export function PreguntaItem(){
 
-    const[pregunta, setPregunta] = useState(null);
+    const[pregunta, setPregunta] = useState([]);
     const[respuesta, setRespuesta] = useState([]);
     const [preguntaS, setPreguntaS] = useState(null);
     const [contador, setContador] = useState(0);
@@ -15,13 +15,20 @@ export function PreguntaItem(){
 
     const {cat_id, dificultad} = useParams();
 
-    useEffect(() => {
-        listp();
-    },[])
+    /*
+    const Listp = async() => {
+        const preguntas = await axios.get(`https://triviaapi-production.up.railway.app/trivia/pregunta/esp/${cat_id}/${dificultad}`);
+        setPregunta(preguntas.data);
+        handleClickPregunta();
+    } */
 
     useEffect(() => {
-        handleClickPregunta();
-    }, [pregunta, respondido]);
+        const fetchData = async () => {
+            const preguntas = await axios.get(`https://triviaapi-production.up.railway.app/trivia/pregunta/esp/${cat_id}/${dificultad}`);
+            setPregunta(preguntas.data);
+        };
+        fetchData();
+    }, [cat_id, dificultad]);
 
     const lose = () => {
         if(respondido.length === 10){
@@ -29,12 +36,10 @@ export function PreguntaItem(){
         }
     }
 
+    console.log(pregunta);
+    console.log(preguntaS);
 
-    const listp = async() => {
-        const preguntas = await axios.get(`http://localhost:8080/trivia/pregunta/esp/${cat_id}/${dificultad}`);
-        setPregunta(preguntas.data);
-        handleClickPregunta();
-    } 
+
     
     const handleClickPregunta = () => {
         if (pregunta && pregunta.length > 0) {
@@ -57,7 +62,7 @@ export function PreguntaItem(){
     }
 
     const listr = async(id_pregunta) => {
-        const res = await axios.get(`http://localhost:8080/trivia/respuestas/busp/${id_pregunta}`)
+        const res = await axios.get(`https://triviaapi-production.up.railway.app/trivia/respuestas/busp/${id_pregunta}`)
         setRespuesta(res.data);
     }
 
@@ -79,7 +84,7 @@ export function PreguntaItem(){
     return(
         <div className="preguntaContenedor">
             <h1>Puntaje {contador}</h1>
-            {preguntaS &&(               
+            {preguntaS && (
                 <div key={preguntaS.id_pre}>
                     <PreguntaComponente titulo = {preguntaS.pregunta_n} categoria={preguntaS.categoriaModel.nombre_cat} dificultad={preguntaS.dificultadModel.nom_dif} />
                     <div className="contenedorRespuesta">
@@ -100,9 +105,12 @@ export function PreguntaItem(){
                                  )
                         }
                     </div>
-
+                
                 </div>
             )}
+
+            
+            <Button onClick={() => handleClickPregunta()}>Cambiar </Button>
         </div>
     );
 }

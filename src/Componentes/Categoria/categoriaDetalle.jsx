@@ -21,7 +21,7 @@ export function CategoriaDetalle(){
     });
 
     const getCat = async() => {
-        const resul = await axios.get(`http://localhost:8080/trivia/categoria/${id}`);
+        const resul = await axios.get(`https://triviaapi-production.up.railway.app/trivia/categoria/${id}`);
         setCategoria(resul.data);
     }
 
@@ -36,6 +36,9 @@ export function CategoriaDetalle(){
             break;
             case 3:
                 setNdificultad("Dificil");
+            break;
+            default:
+                setNdificultad("Seleccione Dificultad");
             break;
         }
     }

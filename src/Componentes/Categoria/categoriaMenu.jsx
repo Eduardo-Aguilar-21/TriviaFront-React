@@ -22,14 +22,6 @@ export function CategoriaMenu(){
             {datos.map((dato) => (
                 <CategoriaItem key={dato.id_cat} id_c={dato.id_cat} titulo={dato.nombre_cat} categoriaId={dato.id_cat} />
             ))}
-            <CategoriaItem key={3} id_c={3} titulo={"nalgas"} categoriaId={"dasd"} />
-            <CategoriaItem key={4} id_c={3} titulo={"nalgas"} categoriaId={"dasd"} />
-            <CategoriaItem key={5} id_c={3} titulo={"nalgas"} categoriaId={"dasd"} />
-            <CategoriaItem key={6} id_c={3} titulo={"nalgas"} categoriaId={"dasd"} />
-            <CategoriaItem key={7} id_c={3} titulo={"nalgas"} categoriaId={"dasd"} />
-            <CategoriaItem key={8} id_c={3} titulo={"nalgas"} categoriaId={"dasd"} />
-            <CategoriaItem key={9} id_c={3} titulo={"nalgas"} categoriaId={"dasd"} />
-            <CategoriaItem key={10} id_c={3} titulo={"nalgas"} categoriaId={"dasd"} />
         </div>
     );
 }
